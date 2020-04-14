@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace losGatosKiosk
 {
@@ -75,11 +77,38 @@ namespace losGatosKiosk
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                //do something
+                //write to DB
+                DateTime thisDay = DateTime.Today;
+
+                /*SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;User Instance=True");
+                SqlCommand cmd = new SqlCommand("sp_insert", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@date", thisDay);
+                cmd.Parameters.AddWithValue("@unit", cboUnit.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@equipmentID", cboEquipment.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@prioritylevel", cboPriority.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@submitter", txtEmployee.Text.ToString());
+                cmd.Parameters.AddWithValue("@additionalinfo", txtInfo.Text.ToString());
+                con.Open();
+                int i = cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                if (i != 0)
+                {
+                    MessageBox.Show(i + "Data Saved");
+                }*/
             }
             else if (dialogResult == DialogResult.No)
             {
-                //do something else
+                cboUnit.SelectedIndex = -1;
+                //cboEquipment.Items[cboEquipment.SelectedIndex] = "";
+                cboPriority.SelectedIndex = -1;
+                cboPriority.Enabled = false;
+                cboEquipment.Enabled = false;
+                txtInfo.Text = "";
+                txtEmployee.Text = "";
+                cboUnit.Select();
             }
         }
 
@@ -93,8 +122,8 @@ namespace losGatosKiosk
             cboEquipment.Enabled = false;
             txtInfo.Text = "";
             txtEmployee.Text = "";
-           
-            
+            cboUnit.Select();
+
         }
 
         private void txtEmployee_TextChanged(object sender, EventArgs e)
@@ -107,6 +136,11 @@ namespace losGatosKiosk
             {
                 btnSubmit.Enabled = false;
             }
+        }
+
+        private void frmKiosk_Load(object sender, EventArgs e)
+        {
+            cboUnit.Select();
         }
     }
 }

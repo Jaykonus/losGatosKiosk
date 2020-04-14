@@ -33,6 +33,10 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lblUnit = new System.Windows.Forms.Label();
             this.grpDetails = new System.Windows.Forms.GroupBox();
+            this.txtEmployee = new System.Windows.Forms.TextBox();
+            this.lblEmployee = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.cboEquipment = new System.Windows.Forms.ComboBox();
             this.lblInfo2 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.txtInfo = new System.Windows.Forms.TextBox();
@@ -41,10 +45,6 @@
             this.lblPriority = new System.Windows.Forms.Label();
             this.lblEquipment = new System.Windows.Forms.Label();
             this.cboUnit = new System.Windows.Forms.ComboBox();
-            this.cboEquipment = new System.Windows.Forms.ComboBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.lblEmployee = new System.Windows.Forms.Label();
-            this.txtEmployee = new System.Windows.Forms.TextBox();
             this.grpDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +111,45 @@
             this.grpDetails.TabIndex = 4;
             this.grpDetails.TabStop = false;
             this.grpDetails.Text = "Ticket Details";
+            // 
+            // txtEmployee
+            // 
+            this.txtEmployee.Enabled = false;
+            this.txtEmployee.Location = new System.Drawing.Point(176, 195);
+            this.txtEmployee.Name = "txtEmployee";
+            this.txtEmployee.Size = new System.Drawing.Size(256, 33);
+            this.txtEmployee.TabIndex = 16;
+            this.txtEmployee.TextChanged += new System.EventHandler(this.txtEmployee_TextChanged);
+            // 
+            // lblEmployee
+            // 
+            this.lblEmployee.AutoSize = true;
+            this.lblEmployee.Location = new System.Drawing.Point(17, 198);
+            this.lblEmployee.Name = "lblEmployee";
+            this.lblEmployee.Size = new System.Drawing.Size(106, 25);
+            this.lblEmployee.TabIndex = 15;
+            this.lblEmployee.Text = "Employee:";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(450, 147);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(211, 66);
+            this.btnReset.TabIndex = 14;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // cboEquipment
+            // 
+            this.cboEquipment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEquipment.Enabled = false;
+            this.cboEquipment.FormattingEnabled = true;
+            this.cboEquipment.Location = new System.Drawing.Point(176, 95);
+            this.cboEquipment.Name = "cboEquipment";
+            this.cboEquipment.Size = new System.Drawing.Size(256, 33);
+            this.cboEquipment.TabIndex = 13;
+            this.cboEquipment.SelectedIndexChanged += new System.EventHandler(this.cboEquipment_SelectedIndexChanged);
             // 
             // lblInfo2
             // 
@@ -199,45 +238,6 @@
             this.cboUnit.TabIndex = 4;
             this.cboUnit.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // cboEquipment
-            // 
-            this.cboEquipment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEquipment.Enabled = false;
-            this.cboEquipment.FormattingEnabled = true;
-            this.cboEquipment.Location = new System.Drawing.Point(176, 95);
-            this.cboEquipment.Name = "cboEquipment";
-            this.cboEquipment.Size = new System.Drawing.Size(256, 33);
-            this.cboEquipment.TabIndex = 13;
-            this.cboEquipment.SelectedIndexChanged += new System.EventHandler(this.cboEquipment_SelectedIndexChanged);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(450, 147);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(211, 66);
-            this.btnReset.TabIndex = 14;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // lblEmployee
-            // 
-            this.lblEmployee.AutoSize = true;
-            this.lblEmployee.Location = new System.Drawing.Point(17, 198);
-            this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(106, 25);
-            this.lblEmployee.TabIndex = 15;
-            this.lblEmployee.Text = "Employee:";
-            // 
-            // txtEmployee
-            // 
-            this.txtEmployee.Enabled = false;
-            this.txtEmployee.Location = new System.Drawing.Point(176, 195);
-            this.txtEmployee.Name = "txtEmployee";
-            this.txtEmployee.Size = new System.Drawing.Size(256, 33);
-            this.txtEmployee.TabIndex = 16;
-            this.txtEmployee.TextChanged += new System.EventHandler(this.txtEmployee_TextChanged);
-            // 
             // frmKiosk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -251,6 +251,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "frmKiosk";
             this.Text = "Los Gatos Morados Ticket Kiosk";
+            this.Load += new System.EventHandler(this.frmKiosk_Load);
             this.grpDetails.ResumeLayout(false);
             this.grpDetails.PerformLayout();
             this.ResumeLayout(false);
