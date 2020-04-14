@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.OleDb;
 
 
 namespace losGatosKiosk
 {
     public partial class frmKiosk : Form
     {
+        //Committed 3:30p 4/14
+
         public frmKiosk()
         {
             InitializeComponent();
@@ -77,32 +80,52 @@ namespace losGatosKiosk
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                //write to DB
+                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;User Instance=True");
                 DateTime thisDay = DateTime.Today;
+                int numID = 0;
 
-                /*SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;User Instance=True");
+                //pull number of rows from database in order to create ticketID
+
+
+               /* string stmt = "SELECT COUNT(*) FROM dbo.tablename";
+                using (SqlConnection (con))
+                {
+                    using (SqlCommand cmdCount = new SqlCommand(stmt, thisConnection))
+                    {
+                        thisConnection.Open();
+                        numID = (int)cmdCount.ExecuteScalar();
+                    }
+                }
+                return numID;
+                //thisConnection.Close();*/
+                
+
+
+
+                //create SQL entry
                 SqlCommand cmd = new SqlCommand("sp_insert", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@date", thisDay);
-                cmd.Parameters.AddWithValue("@unit", cboUnit.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@dateSubmitted", thisDay);
+                cmd.Parameters.AddWithValue("@unitID", cboUnit.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@equipmentID", cboEquipment.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@prioritylevel", cboPriority.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@priority", cboPriority.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@submitter", txtEmployee.Text.ToString());
-                cmd.Parameters.AddWithValue("@additionalinfo", txtInfo.Text.ToString());
+                cmd.Parameters.AddWithValue("@additionalInformation", txtInfo.Text.ToString());
+
+                //write entry
                 con.Open();
                 int i = cmd.ExecuteNonQuery();
-
                 con.Close();
 
                 if (i != 0)
                 {
-                    MessageBox.Show(i + "Data Saved");
-                }*/
+                    MessageBox.Show("Data Saved");
+                }
             }
+            //reset app
             else if (dialogResult == DialogResult.No)
             {
                 cboUnit.SelectedIndex = -1;
-                //cboEquipment.Items[cboEquipment.SelectedIndex] = "";
                 cboPriority.SelectedIndex = -1;
                 cboPriority.Enabled = false;
                 cboEquipment.Enabled = false;
@@ -116,7 +139,6 @@ namespace losGatosKiosk
         {
 
             cboUnit.SelectedIndex = -1;
-            //cboEquipment.Items[cboEquipment.SelectedIndex] = "";
             cboPriority.SelectedIndex = -1;
             cboPriority.Enabled = false;
             cboEquipment.Enabled = false;
