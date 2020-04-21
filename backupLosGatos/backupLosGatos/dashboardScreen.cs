@@ -164,5 +164,10 @@ namespace backupLosGatos
                 dashboardGrid.DataSource = ds.Tables[0];
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dashboardGrid.Refresh();
+        }
     }
 }

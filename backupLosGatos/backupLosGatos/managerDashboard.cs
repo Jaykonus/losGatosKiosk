@@ -19,6 +19,7 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
+
         SqlConnection conn = null;
         SqlDataReader reader = null;
 
@@ -56,6 +57,9 @@ namespace backupLosGatos
             statusOption.SelectedValue = 0;
 
             // Lab 7 screen load code ends here
+
+            this.ActiveControl = technicianOption;
+
         }
 
         private void ticketPage_Click(object sender, EventArgs e)
@@ -134,6 +138,14 @@ namespace backupLosGatos
             ticketDetails newTicket = new ticketDetails();
             newTicket.Show();
             this.Close();
+        }
+
+       
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            
+            dashboardGrid.Refresh();
         }
     }
 }

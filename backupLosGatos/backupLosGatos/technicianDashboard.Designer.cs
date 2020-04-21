@@ -42,6 +42,7 @@ namespace backupLosGatos
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.labelRole = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.filterPanel.SuspendLayout();
@@ -162,6 +163,7 @@ namespace backupLosGatos
             // 
             // filterPanel
             // 
+            this.filterPanel.Controls.Add(this.btnRefresh);
             this.filterPanel.Controls.Add(this.technicianOption);
             this.filterPanel.Controls.Add(this.statusOption);
             this.filterPanel.Controls.Add(this.btnSearch);
@@ -183,6 +185,16 @@ namespace backupLosGatos
             this.labelRole.TabIndex = 30;
             this.labelRole.Text = "technician";
             this.labelRole.Visible = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(566, 51);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(104, 23);
+            this.btnRefresh.TabIndex = 26;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // technicianDashboard
             // 
@@ -223,5 +235,6 @@ namespace backupLosGatos
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel filterPanel;
         private System.Windows.Forms.Label labelRole;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

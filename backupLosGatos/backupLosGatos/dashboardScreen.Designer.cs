@@ -67,6 +67,7 @@ namespace backupLosGatos
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
             this.labelRole = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -341,6 +342,7 @@ namespace backupLosGatos
             // 
             // filterPanel
             // 
+            this.filterPanel.Controls.Add(this.btnRefresh);
             this.filterPanel.Controls.Add(equipmentDescriptionLabel);
             this.filterPanel.Controls.Add(this.equipmentOption);
             this.filterPanel.Controls.Add(this.technicianOption);
@@ -395,6 +397,16 @@ namespace backupLosGatos
             this.labelRole.TabIndex = 29;
             this.labelRole.Text = "coordinator";
             this.labelRole.Visible = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(566, 54);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(104, 23);
+            this.btnRefresh.TabIndex = 27;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dashboardScreen
             // 
@@ -463,5 +475,6 @@ namespace backupLosGatos
         private System.Windows.Forms.Label labelRole;
         public System.Windows.Forms.ToolStripMenuItem ticketPage;
         public System.Windows.Forms.DataGridView dashboardGrid;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

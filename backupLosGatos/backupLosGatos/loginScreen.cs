@@ -13,6 +13,7 @@ namespace backupLosGatos
 {
     public partial class loginScreen : Form
     {
+        
         public loginScreen()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace backupLosGatos
                       
         }
 
+       
         public void submitButton_Click(object sender, EventArgs e)
         {
             Boolean userValid;
@@ -100,9 +102,18 @@ namespace backupLosGatos
 
         private void loginScreen_Load(object sender, EventArgs e)
         {
+            
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
             usernameText.Text = "";
             passwordText.Text = "";
+        }
+
+        private void passwordText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                submitButton.PerformClick();
+            }
         }
     }
 }

@@ -112,5 +112,11 @@ namespace backupLosGatos
                 // end of lab 7 code regarding drop down
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            
+            dashboardGrid.Refresh();
+        }
     }
 }

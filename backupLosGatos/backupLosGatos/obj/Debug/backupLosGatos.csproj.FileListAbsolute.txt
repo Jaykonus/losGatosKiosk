@@ -74,3 +74,17 @@ C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\ba
 C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.GenerateResource.cache
 C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
 C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.exe.config
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.exe
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.pdb
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csprojAssemblyReference.cache
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.dashboardScreen.resources
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.loginScreen.resources
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.managerDashboard.resources
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.Properties.Resources.resources
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.technicianDashboard.resources
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.ticketDetails.resources
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.GenerateResource.cache
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.CoreCompileInputs.cache
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
+C:\Users\j24ho\Source\Repos\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
