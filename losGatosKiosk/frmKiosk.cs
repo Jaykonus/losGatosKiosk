@@ -80,47 +80,64 @@ namespace losGatosKiosk
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;User Instance=True");
+                string connectionString = @"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true";
+                SqlConnection con = new SqlConnection(connectionString);
                 DateTime thisDay = DateTime.Today;
                 int numID = 0;
 
                 //pull number of rows from database in order to create ticketID
 
 
-               /* string stmt = "SELECT COUNT(*) FROM dbo.tablename";
-                using (SqlConnection (con))
-                {
-                    using (SqlCommand cmdCount = new SqlCommand(stmt, thisConnection))
+                /* string stmt = "SELECT COUNT(*) FROM dbo.tablename";
+                 using (SqlConnection (con))
+                 {
+                     using (SqlCommand cmdCount = new SqlCommand(stmt, thisConnection))
+                     {
+                         thisConnection.Open();
+                         numID = (int)cmdCount.ExecuteScalar();
+                     }
+                 }
+                 return numID;
+                 //thisConnection.Close();*/
+
+
+                //create strings for all variables
+                numID = numID + 1;
+                DateTime date = DateTime.Today;
+                string unitID = cboUnit.Text.ToString();
+                string equipmentID = cboEquipment.Text.ToString();
+                string priorityLevel = cboPriority.Text.ToString();
+                string employeeName = txtEmployee.Text.ToString();
+                string addInfo = txtInfo.Text.ToString();
+
+
+                
+                    using (SqlConnection openCon = new SqlConnection(connectionString))
                     {
-                        thisConnection.Open();
-                        numID = (int)cmdCount.ExecuteScalar();
+                        string injection = "INSERT into Kiosk (ticketID, unitID, equipmentID, priorityLevel, employeeName, addInfo, date) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @employeeName, @addInfo, @date)";
+
+                        using (SqlCommand command = new SqlCommand(injection))
+                        {
+                            command.Connection = openCon;
+                            command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
+                            command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
+                            command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
+                            command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
+                            command.Parameters.Add("@employeeName", SqlDbType.NVarChar, 50).Value = employeeName;
+                            command.Parameters.Add("@addInfo", SqlDbType.NVarChar, 1000).Value = addInfo;
+                            command.Parameters.Add("@date", SqlDbType.Date, 30).Value = date;
+
+                            openCon.Open();
+
+                            command.ExecuteNonQuery();
+                        }
                     }
-                }
-                return numID;
-                //thisConnection.Close();*/
+                    MessageBox.Show("Entry Saved");
                 
 
 
 
-                //create SQL entry
-                SqlCommand cmd = new SqlCommand("sp_insert", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@dateSubmitted", thisDay);
-                cmd.Parameters.AddWithValue("@unitID", cboUnit.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@equipmentID", cboEquipment.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@priority", cboPriority.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@submitter", txtEmployee.Text.ToString());
-                cmd.Parameters.AddWithValue("@additionalInformation", txtInfo.Text.ToString());
-
-                //write entry
-                con.Open();
-                int i = cmd.ExecuteNonQuery();
-                con.Close();
-
-                if (i != 0)
-                {
-                    MessageBox.Show("Data Saved");
-                }
+             
             }
             //reset app
             else if (dialogResult == DialogResult.No)
